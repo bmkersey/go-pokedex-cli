@@ -12,20 +12,20 @@ func TestCleanInput(t *testing.T) {
 			expected: []string{"hello", "world"},
 		},
 		{
-			input: "Pikachu Bulbasaur Charmander",
+			input:    "Pikachu Bulbasaur Charmander",
 			expected: []string{"pikachu", "bulbasaur", "charmander"},
 		},
 		{
-			input: "Gotta catch em all",
+			input:    "Gotta catch em all",
 			expected: []string{"gotta", "catch", "em", "all"},
 		},
 	}
 
 	for _, c := range cases {
 		actual := cleanInput(c.input)
-		if len(actual) != len(c.expected){
+		if len(actual) != len(c.expected) {
 			t.Errorf("cleanInput(%q) returned %d words, expected %d words", c.input, len(actual), len(c.expected))
-    continue
+			continue
 		}
 
 		for i := range actual {

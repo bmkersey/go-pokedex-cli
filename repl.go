@@ -16,15 +16,14 @@ type cliCommand struct {
 }
 
 type config struct {
-	pokeapiClient pokeapi.Client
+	pokeapiClient    pokeapi.Client
 	nextLocationsURL *string
 	prevLocationsURL *string
 }
 
-
 func startRepl(cfg *config) {
 	scanner := bufio.NewScanner(os.Stdin)
-	
+
 	for {
 		fmt.Print("Pokedex >")
 		scanner.Scan()
@@ -38,8 +37,8 @@ func startRepl(cfg *config) {
 			err := command.callback(cfg)
 			if err != nil {
 				fmt.Println("Error:", err)
-			} 
-		}else {
+			}
+		} else {
 			fmt.Println("Command not recognized")
 		}
 	}
@@ -60,14 +59,14 @@ func getCommands() map[string]cliCommand {
 			callback:    commandHelp,
 		},
 		"map": {
-			name: "map",
+			name:        "map",
 			description: "Retrieves next page of locations",
-			callback: commandMapf,
+			callback:    commandMapf,
 		},
 		"mapb": {
-			name: "mapb",
+			name:        "mapb",
 			description: "Retrieves the previous page of locations",
-			callback: commandMapb,
+			callback:    commandMapb,
 		},
 		"exit": {
 			name:        "exit",
